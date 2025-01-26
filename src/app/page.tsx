@@ -20,7 +20,7 @@ export default function Home() {
             <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-primary opacity-20 blur-[100px]"></div>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Bridging Academia and Industry through Blockchain
+            Bridging Academia and Industry through AI
           </h1>
           <p className="text-xl mb-8">
             Connect, learn, and grow with SkillBridge
