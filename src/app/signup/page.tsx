@@ -28,7 +28,7 @@ export default function SignUp() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen text-white">
       <Navigation />
       <main className="container mx-auto px-4 py-16">
         <motion.div
@@ -45,7 +45,7 @@ export default function SignUp() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className={`px-4 py-2 rounded-full ${
-                  userType === type ? 'bg-primary text-white' : 'bg-secondary text-white'
+                  userType === type ? 'bg-primary text-black' : 'bg-secondary text-black'
                 }`}
                 onClick={() => setUserType(type)}
               >
@@ -60,7 +60,7 @@ export default function SignUp() {
               placeholder="Name"
               value={formData.name}
               onChange={handleInputChange}
-              className="w-full px-4 py-2 rounded bg-secondary text-white"
+              className="w-full px-4 py-2 rounded bg-secondary text-primary-green"
               required
             />
             <input
@@ -69,7 +69,7 @@ export default function SignUp() {
               placeholder="Email"
               value={formData.email}
               onChange={handleInputChange}
-              className="w-full px-4 py-2 rounded bg-secondary text-white"
+              className="w-full px-4 py-2 rounded bg-secondary text-primary-green"
               required
             />
             <input
@@ -78,7 +78,7 @@ export default function SignUp() {
               placeholder="Password"
               value={formData.password}
               onChange={handleInputChange}
-              className="w-full px-4 py-2 rounded bg-secondary text-white"
+              className="w-full px-4 py-2 rounded bg-secondary text-primary-green"
               required
             />
             {userType === 'Student' && (
@@ -88,7 +88,7 @@ export default function SignUp() {
                 placeholder="Skills (comma separated)"
                 value={formData.skills}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 rounded bg-secondary text-white"
+                className="w-full px-4 py-2 rounded bg-secondary text-primary-green"
               />
             )}
             {userType === 'Mentor' && (
@@ -98,7 +98,7 @@ export default function SignUp() {
                 placeholder="Expertise"
                 value={formData.expertise}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 rounded bg-secondary text-white"
+                className="w-full px-4 py-2 rounded bg-secondary text-primary-green"
               />
             )}
             {(userType === 'University' || userType === 'Company') && (
@@ -108,13 +108,13 @@ export default function SignUp() {
                 placeholder="Organization Details"
                 value={formData.organizationDetails}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 rounded bg-secondary text-white"
+                className="w-full px-4 py-2 rounded bg-secondary text-primary-green"
               />
             )}
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-full bg-primary text-white px-6 py-3 rounded-full font-semibold"
+              className="w-full bg-primary text-black px-6 py-3 rounded-full font-semibold"
               type="submit"
             >
               Sign Up

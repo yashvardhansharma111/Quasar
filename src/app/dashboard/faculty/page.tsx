@@ -1,6 +1,7 @@
 import { Sidebar } from "@/components/FacultyDashboard/Sidebar"
 import { CurrentLectureCard } from "@/components/FacultyDashboard/CurrentLectureCard"
 import { UpcomingWork } from "@/components/FacultyDashboard/UpcomingWork"
+import Navigation from "@/components/Navigation"
 
 // This would normally come from an API
 const mockData = {
@@ -69,10 +70,16 @@ const mockData = {
 
 export default function DashboardPage() {
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex flex-col md:flex-row h-screen bg-gray-50">
+      {/* Sidebar */}
       <Sidebar tasks={mockData.tasks} classes={mockData.classes} topStudents={mockData.topStudents} />
-      <main className="flex-1 p-6 overflow-auto">
-        <div className="max-w-4xl mx-auto space-y-6">
+
+      {/* Main Content */}
+      <main className="flex-1 p-4 md:p-6 overflow-auto">
+        <div className="-mt-8">
+          <Navigation />
+        </div>
+        <div className="max-w-4xl mx-auto space-y-6 mt-2">
           <CurrentLectureCard lecture={mockData.currentLecture} />
           <UpcomingWork tasks={mockData.tasks} classes={mockData.classes} />
         </div>
@@ -80,4 +87,3 @@ export default function DashboardPage() {
     </div>
   )
 }
-

@@ -36,7 +36,7 @@ export default function AdminPanel() {
         >
           Admin Panel
         </motion.h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-black">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -71,13 +71,13 @@ export default function AdminPanel() {
                 value={newUser.name}
                 onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
                 placeholder="Name"
-                className="w-full px-4 py-2 rounded bg-accent text-white"
+                className="w-full px-4 py-2 rounded bg-accent text-black"
                 required
               />
               <select
                 value={newUser.role}
                 onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}
-                className="w-full px-4 py-2 rounded bg-accent text-white"
+                className="w-full px-4 py-2 rounded bg-accent text-black"
               >
                 <option value="Student">Student</option>
                 <option value="Mentor">Mentor</option>
@@ -89,7 +89,7 @@ export default function AdminPanel() {
                 value={newUser.email}
                 onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
                 placeholder="Email"
-                className="w-full px-4 py-2 rounded bg-accent text-white"
+                className="w-full px-4 py-2 rounded bg-accent text-black"
                 required
               />
               <button

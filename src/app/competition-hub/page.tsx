@@ -28,7 +28,7 @@ export default function CompetitionHub() {
     : competitions.filter(comp => comp.category === filter)
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen  ">
       <Navigation />
       <main className="container mx-auto px-4 py-16">
         <motion.h1
@@ -43,9 +43,9 @@ export default function CompetitionHub() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="bg-secondary p-6 rounded-lg"
+            className="bg-secondary text-black p-6 rounded-lg"
           >
-            <h2 className="text-2xl font-semibold mb-4">Global Leaderboard</h2>
+            <h2 className="text-2xl font-bold mb-4 underline">Global Leaderboard</h2>
             <table className="w-full">
               <thead>
                 <tr>
@@ -76,9 +76,9 @@ export default function CompetitionHub() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
-            className="bg-secondary p-6 rounded-lg"
+            className="bg-secondary text-black p-6 rounded-lg"
           >
-            <h2 className="text-2xl font-semibold mb-4">Upcoming Competitions</h2>
+            <h2 className="text-2xl font-bold mb-4 underline text-black">Upcoming Competitions</h2>
             <div className="mb-4">
               <label htmlFor="filter" className="mr-2">Filter by:</label>
               <select

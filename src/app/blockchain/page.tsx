@@ -19,7 +19,7 @@ export default function BlockchainDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen  text-white">
       <Navigation />
       <main className="container mx-auto px-4 py-16">
         <motion.h1
@@ -29,7 +29,7 @@ export default function BlockchainDashboard() {
         >
           Blockchain Dashboard
         </motion.h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-black">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}

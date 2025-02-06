@@ -8,7 +8,7 @@ import Notifications from './Notification'
 
 const navItems = [
   { name: 'Home', href: '/' },
-  { name: 'Dashboard', href: '/dashboard' },
+  { name: 'Dashboard', href: '/dashboard/faculty' },
   { name: 'Competition Hub', href: '/competition-hub' },
   { name: 'Blockchain', href: '/blockchain' },
 ]
@@ -32,7 +32,7 @@ export default function Navigation() {
             >
               <Link 
                 href={item.href} 
-                className={`text-white hover:text-primary ${
+                className={`text-black hover:text-primary ${
                   pathname === item.href ? 'border-b-2 border-primary' : ''
                 }`}
               >
