@@ -7,4 +7,4 @@ const CompanySchema = new mongoose.Schema({
   internships: [{ type: mongoose.Schema.Types.ObjectId, ref: "Project" }],
 });
 
-export default mongoose.model("Company", CompanySchema);
+export default mongoose.models.Company|| mongoose.model("Company", CompanySchema);

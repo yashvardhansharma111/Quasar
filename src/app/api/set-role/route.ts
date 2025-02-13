@@ -13,7 +13,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(405).json({ message: "Method Not Allowed" });
   }
 
-  dbConnect();
+  await dbConnect();
 
   try {
     // Get Clerk Authenticated User
