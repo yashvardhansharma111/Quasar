@@ -25,6 +25,9 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
     // Fetch User from MongoDB
     const user = await User.findOne({ clerkId: userId }).lean();
 
+    console.log("🔍 Searching for user with clerkId:", userId);
+
+
     if (!user) {
       return res.status(404).json({ message: "User not found in database" });
     }

@@ -1,46 +1,44 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import mongoose from "mongoose";
+import { NextRequest, NextResponse } from "next/server";
 import User from "@/lib/models/User";
 import Student from "@/lib/models/Student";
 import Professor from "@/lib/models/Professor";
 import Company from "@/lib/models/Company";
-import { getAuth } from "@clerk/nextjs/server"; 
+import { auth } from "@clerk/nextjs/server";
 import dbConnect from "@/utils/dbConnect";
 
+export const dynamic = "force-dynamic"; // ✅ Forces Node.js runtime
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ message: "Method Not Allowed" });
-  }
-
+export async function POST(request: NextRequest) {
   await dbConnect();
 
   try {
-    // Get Clerk Authenticated User
-    const { userId } = getAuth(req);
+
+    const { userId } = await auth(); 
 
     if (!userId) {
-      return res.status(401).json({ message: "Unauthorized" });
+      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
+
+    // Get request body
+    const body = await request.json();
+    const { role } = body;
 
     // Fetch User from MongoDB
     const user = await User.findOne({ clerkId: userId });
 
     if (!user) {
-      return res.status(404).json({ message: "User not found in database" });
+      return NextResponse.json({ message: "User not found in database" }, { status: 404 });
     }
 
     // Check if User Already Has a Role
     if (user.role) {
-      return res.status(400).json({ message: "User role is already set" });
+      return NextResponse.json({ message: "User role is already set" }, { status: 400 });
     }
-
-    const { role } = req.body;
 
     // Validate Role
     const validRoles = ["student", "professor", "company", "admin"];
     if (!validRoles.includes(role)) {
-      return res.status(400).json({ message: "Invalid role provided" });
+      return NextResponse.json({ message: "Invalid role provided" }, { status: 400 });
     }
 
     user.role = role;
@@ -61,10 +59,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         break;
     }
 
-    return res.status(200).json({ message: "Role assigned successfully", role });
+    return NextResponse.json({ message: "Role assigned successfully", role }, { status: 200 });
 
   } catch (error) {
     console.error("Error setting user role:", error);
-    return res.status(500).json({ message: "Internal Server Error" });
+    return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
   }
 }

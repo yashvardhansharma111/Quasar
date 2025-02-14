@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "@/utils/dbConnect";
-import OpportunityApplication from "@/lib/models/OpportunityApplication";
+import OpportunityApplication from "@/lib/models/Project";
 import Notification from "@/lib/models/Notification";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {

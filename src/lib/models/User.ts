@@ -3,10 +3,10 @@ import mongoose from "mongoose";
 const UserSchema = new mongoose.Schema(
   {
     clerkId: { type: String, required: true, unique: true }, // Clerk Auth ID
-    role: { type: String, enum: ["student", "professor", "company", "admin"],default:null, required: true },
-    email: { type: String, required: true, unique: true },
+    role: { type: String, enum: ["student", "professor", "company", "admin"], default: "student" }, // Fix default
+    email: { type: String, required: true, unique: true, lowercase: true }, // Ensure lowercase for uniqueness
     name: { type: String, required: true },
-    notifications: [{ type: mongoose.Schema.Types.ObjectId, ref: "Notification" }],
+    notifications: [{ type: mongoose.Schema.Types.ObjectId, ref: "Notification" }], // Ensure Notification model exists
   },
   { timestamps: true }
 );

@@ -14,26 +14,20 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const checkRole = async () => {
+    const syncUser = async () => {
       if (!isSignedIn) return;
+  
       try {
-        const response = await fetch("/api/auth/getRole");
+        const response = await fetch("/api/auth/sync-user", { method: "POST" });
         const data = await response.json();
-        if (response.ok) {
-          setRole(data.role);
-          if (!data.role) {
-            router.push("api/set-role"); 
-          }
-        }
+        console.log("✅ User Sync Response:", data);
       } catch (error) {
-        console.error("Error fetching role:", error);
-      } finally {
-        setLoading(false);
+        console.error("❌ Error syncing user:", error);
       }
     };
-
-    checkRole();
-  }, [isSignedIn, router]);
+  
+    syncUser();
+  }, [isSignedIn]);  
 
 
   return (

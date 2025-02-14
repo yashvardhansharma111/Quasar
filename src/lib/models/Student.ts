@@ -7,7 +7,7 @@ const StudentSchema = new mongoose.Schema({
   year: { type: Number, required: true },
   section: { type: String, required: true },
   classId: { type: mongoose.Schema.Types.ObjectId, ref: "Class" }, // Joined Class
-  profile: ProfileSchema, // Embedded Profile Schema
+  profile: ProfileSchema,
   scores: {
     academics: { type: Number, default: 0 },
     practicals: { type: Number, default: 0 },
