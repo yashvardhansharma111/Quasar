@@ -7,7 +7,7 @@ export default clerkMiddleware(async (req) => {
     await dbConnect(); // Ensure DB connection
     console.log("✅ Connected to DB");
 
-    const { userId, sessionClaims } = getAuth(req);
+    const { userId, sessionClaims } = getAuth(req as any) as { userId: string, sessionClaims: { email_addresses?: { email_address: string }[], first_name?: string, last_name?: string } };
 
     if (userId) {
       console.log("🔹 Clerk Authenticated User ID:", userId);
